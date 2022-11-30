@@ -1,0 +1,56 @@
+---
+title: " Template - R Markdown"
+author: "Dept of Bio-Technology"
+date: "November 26 ,2022 @ BMSCE"
+output: 
+  bookdown::html_document2:
+  number_sections: TRUE
+  fig_caption: TRUE
+csl: apa-5th-edition.csl
+bibliography: cite.bib
+---
+```{r,warning=FALSE,include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,warning = TRUE)
+library(knitr)
+library(citation)
+library(rmarkdown)
+setwd("/Users/apple/Desktop/R Basics")
+knitr::include_graphics("car.jpeg")
+mt = mtcars
+
+```
+
+### Introduction
+
+This study took the **mtcars** data set from R depositories but actual data borrowed from @henderson1981building, the data set contains `r nrow(mt)` rows and `r ncol(mt)` columns. Study used psych package extensively to do the basic analysis which is used for cross section data @x. 
+
+## Graphical representation
+
+```{r}
+kable(head(mt),caption = "Data set first 6 rows")
+plot(mt$wt,mt$mpg,pch=12,col="orange",main="scatterplot",xlab = "weight",ylab="MPG")
+```
+
+The above scatter plot showed negative relationship between weight and MPG of the cars.
+
+
+## Descriptive stats using psych package
+
+```{r}
+library(psych)
+des = describe(mt)
+library(kableExtra)
+kable(des,caption = "Descriptive stats",digits = 2)
+```
+
+
+## Inserting Image
+
+```{r,fig.cap="Reference",out.width="40%",fig.align='center'}
+knitr::include_graphics("captain.jpeg")
+```
+
+
+
+
+### Reference:
